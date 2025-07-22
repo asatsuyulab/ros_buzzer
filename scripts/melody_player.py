@@ -7,6 +7,8 @@ from buzzer.srv import PlayMelody, PlayMelodyResponse
 import threading
 import time
 import mido
+import os
+import rospkg
 
 class MelodyPlayerNode:
     def __init__(self):
@@ -53,7 +55,10 @@ class MelodyPlayerNode:
         if self.playing_event.is_set():
             return PlayMelodyResponse(success=False, message="Already playing")
 
-        filepath = self.melody_map.get(str(req.melody_id), self.melody_map["0"])
+        rospack = rospkg.RosPack()
+        pkg_path = rospack.get_path('buzzer')
+        filename = self.melody_map.get(str(req.melody_id), self.melody_map["0"])
+        filepath = os.path.join(pkg_path, 'resources', filename)
         self.playing_event.set()
 
         self.player_thread = threading.Thread(target=self.play_midi, args=(filepath, req.loop))
