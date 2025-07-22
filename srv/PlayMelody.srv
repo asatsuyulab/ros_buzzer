@@ -1,0 +1,5 @@
+int32 melody_id
+bool loop
+---
+bool success
+string message

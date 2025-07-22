@@ -1,0 +1,4 @@
+melody_map:
+  "0": "/home/tatsu/catkin_ws/src/buzzer/resources/demo_melody.mid"
+  "1": "/home/tatsu/catkin_ws/src/buzzer/resources/melody1.mid"
+  "2": "/home/tatsu/catkin_ws/src/buzzer/resources/melody2.mid"

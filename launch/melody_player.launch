@@ -1,0 +1,6 @@
+<launch>
+  <group ns="melody">
+    <rosparam command="load" file="$(find buzzer)/config/melody_map.yaml" />
+    <node name="player" pkg="buzzer" type="melody_player.py" output="screen"/>
+  </group>
+</launch>
